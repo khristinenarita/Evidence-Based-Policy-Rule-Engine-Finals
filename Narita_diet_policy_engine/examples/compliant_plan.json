@@ -1,0 +1,41 @@
+{
+  "policy_id": "diabetic_low_sodium",
+  "meals": [
+    {
+      "name": "Breakfast",
+      "type": "main",
+      "items": [
+        {"food_id": "oatmeal_cooked", "servings": 1},
+        {"food_id": "banana", "servings": 1},
+        {"food_id": "boiled_egg", "servings": 2}
+      ]
+    },
+    {
+      "name": "Lunch",
+      "type": "main",
+      "items": [
+        {"food_id": "brown_rice_cooked", "servings": 1},
+        {"food_id": "chicken_breast_grilled", "servings": 1},
+        {"food_id": "mixed_salad", "servings": 1},
+        {"food_id": "olive_oil", "servings": 1}
+      ]
+    },
+    {
+      "name": "Dinner",
+      "type": "main",
+      "items": [
+        {"food_id": "fish_steamed", "servings": 1.5},
+        {"food_id": "brown_rice_cooked", "servings": 1},
+        {"food_id": "steamed_broccoli", "servings": 1}
+      ]
+    },
+    {
+      "name": "Afternoon snack",
+      "type": "snack",
+      "items": [
+        {"food_id": "apple", "servings": 1},
+        {"food_id": "almonds", "servings": 0.5}
+      ]
+    }
+  ]
+}

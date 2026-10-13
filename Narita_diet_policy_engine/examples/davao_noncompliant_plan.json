@@ -1,0 +1,41 @@
+{
+  "policy_id": "davao_hospital_diabetic_low_sodium",
+  "meals": [
+    {
+      "name": "Almusal",
+      "type": "main",
+      "items": [
+        {"food_id": "pandesal", "servings": 3},
+        {"food_id": "longganisa", "servings": 1},
+        {"food_id": "coffee_3in1", "servings": 2}
+      ]
+    },
+    {
+      "name": "Tanghalian",
+      "type": "main",
+      "items": [
+        {"food_id": "white_rice_cooked", "servings": 2},
+        {"food_id": "sinigang_baboy", "servings": 1},
+        {"food_id": "chicharon", "servings": 1},
+        {"food_id": "patis", "servings": 1}
+      ]
+    },
+    {
+      "name": "Hapunan",
+      "type": "main",
+      "items": [
+        {"food_id": "white_rice_cooked", "servings": 1.5},
+        {"food_id": "tuyo", "servings": 2},
+        {"food_id": "bagoong", "servings": 1}
+      ]
+    },
+    {
+      "name": "Merienda",
+      "type": "snack",
+      "items": [
+        {"food_id": "halo_halo", "servings": 1},
+        {"food_id": "banana_cue", "servings": 1}
+      ]
+    }
+  ]
+}

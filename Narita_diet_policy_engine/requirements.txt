@@ -1,0 +1,6 @@
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.6
+# for the FastAPI tests only
+httpx>=0.27
+pytest>=8.0

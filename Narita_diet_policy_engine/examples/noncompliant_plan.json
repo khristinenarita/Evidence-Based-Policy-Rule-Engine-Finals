@@ -1,0 +1,37 @@
+{
+  "policy_id": "diabetic_low_sodium",
+  "meals": [
+    {
+      "name": "Breakfast",
+      "type": "main",
+      "items": [
+        {"food_id": "instant_noodles", "servings": 1},
+        {"food_id": "soda_regular", "servings": 1}
+      ]
+    },
+    {
+      "name": "Lunch",
+      "type": "main",
+      "items": [
+        {"food_id": "white_rice_cooked", "servings": 2},
+        {"food_id": "pork_adobo", "servings": 1}
+      ]
+    },
+    {
+      "name": "Dinner",
+      "type": "main",
+      "items": [
+        {"food_id": "canned_soup_regular", "servings": 1},
+        {"food_id": "whole_wheat_bread", "servings": 2},
+        {"food_id": "bacon", "servings": 1}
+      ]
+    },
+    {
+      "name": "Evening snack",
+      "type": "snack",
+      "items": [
+        {"food_id": "chocolate_cake", "servings": 1}
+      ]
+    }
+  ]
+}

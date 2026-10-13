@@ -1,0 +1,43 @@
+{
+  "policy_id": "davao_hospital_diabetic_low_sodium",
+  "meals": [
+    {
+      "name": "Almusal",
+      "type": "main",
+      "items": [
+        {"food_id": "oatmeal_cooked", "servings": 1},
+        {"food_id": "boiled_egg", "servings": 2},
+        {"food_id": "tomato_cucumber", "servings": 1},
+        {"food_id": "papaya_ripe", "servings": 1}
+      ]
+    },
+    {
+      "name": "Tanghalian",
+      "type": "main",
+      "items": [
+        {"food_id": "brown_rice_cooked", "servings": 0.75},
+        {"food_id": "tuna_grilled", "servings": 1},
+        {"food_id": "pinakbet", "servings": 1},
+        {"food_id": "guava", "servings": 1}
+      ]
+    },
+    {
+      "name": "Hapunan",
+      "type": "main",
+      "items": [
+        {"food_id": "brown_rice_cooked", "servings": 0.75},
+        {"food_id": "bangus_grilled", "servings": 1},
+        {"food_id": "steamed_kangkong", "servings": 1},
+        {"food_id": "pomelo", "servings": 0.5}
+      ]
+    },
+    {
+      "name": "Merienda",
+      "type": "snack",
+      "items": [
+        {"food_id": "plain_yogurt_lowfat", "servings": 0.5},
+        {"food_id": "almonds", "servings": 0.5}
+      ]
+    }
+  ]
+}

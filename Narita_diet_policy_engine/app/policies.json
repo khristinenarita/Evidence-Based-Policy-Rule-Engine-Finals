@@ -1,0 +1,341 @@
+{
+  "policies": [
+    {
+      "id": "low_sodium_2g",
+      "name": "Low-Sodium Diet (2,000 mg/day)",
+      "description": "Common hospital '2 g sodium' diet. Daily cap follows the WHO adult recommendation; per-meal caps are example institutional rules.",
+      "sources": [
+        {"label": "WHO adult guideline: sodium intake < 2 g/day (< 5 g salt/day)"}
+      ],
+      "rules": [
+        {
+          "id": "sodium_day_max",
+          "type": "max",
+          "scope": "day",
+          "nutrient": "sodium_mg",
+          "value": 2000,
+          "severity": "error",
+          "description": "Total daily sodium must not exceed 2,000 mg.",
+          "source": "WHO sodium guideline (< 2 g/day)"
+        },
+        {
+          "id": "sodium_main_meal_max",
+          "type": "max",
+          "scope": "meal",
+          "applies_to": "main",
+          "nutrient": "sodium_mg",
+          "value": 800,
+          "severity": "warning",
+          "description": "Spread sodium across the day: no main meal above 800 mg.",
+          "source": "Example institutional rule (configurable)"
+        },
+        {
+          "id": "sodium_snack_max",
+          "type": "max",
+          "scope": "meal",
+          "applies_to": "snack",
+          "nutrient": "sodium_mg",
+          "value": 400,
+          "severity": "warning",
+          "description": "No snack above 400 mg sodium.",
+          "source": "Example institutional rule (configurable)"
+        },
+        {
+          "id": "no_high_sodium_items",
+          "type": "forbidden_tags",
+          "tags": ["high_sodium_item"],
+          "severity": "warning",
+          "description": "Avoid cured meats, instant noodles, regular canned soups and salty condiments.",
+          "source": "Example institutional rule (configurable)"
+        }
+      ]
+    },
+    {
+      "id": "low_sodium_1500",
+      "name": "Strict Low-Sodium Diet (1,500 mg/day)",
+      "description": "Extends the 2 g diet with the stricter AHA ideal limit.",
+      "extends": ["low_sodium_2g"],
+      "sources": [
+        {"label": "AHA: ideal limit 1,500 mg sodium/day for most adults"}
+      ],
+      "rules": [
+        {
+          "id": "sodium_day_max",
+          "type": "max",
+          "scope": "day",
+          "nutrient": "sodium_mg",
+          "value": 1500,
+          "severity": "error",
+          "description": "Total daily sodium must not exceed 1,500 mg.",
+          "source": "AHA ideal sodium limit"
+        }
+      ]
+    },
+    {
+      "id": "diabetic_ccho",
+      "name": "Diabetic Consistent-Carbohydrate Diet",
+      "description": "Typical institutional consistent-carbohydrate (CCHO) meal pattern for adults with diabetes, plus general Dietary Guidelines limits. ADA recommends individualised targets, so every number here is configurable.",
+      "sources": [
+        {"label": "ADA Standards of Care in Diabetes - Nutrition therapy (individualised, consistent carbohydrate intake)"},
+        {"label": "Dietary Guidelines for Americans 2020-2025 (sodium, saturated fat, added sugars, fiber)"}
+      ],
+      "rules": [
+        {
+          "id": "carb_main_max",
+          "type": "max",
+          "scope": "meal",
+          "applies_to": "main",
+          "nutrient": "carbs_g",
+          "value": 60,
+          "severity": "error",
+          "description": "Main meals must not exceed 60 g carbohydrate.",
+          "source": "Typical institutional CCHO pattern (45-60 g/meal)"
+        },
+        {
+          "id": "carb_main_min",
+          "type": "min",
+          "scope": "meal",
+          "applies_to": "main",
+          "nutrient": "carbs_g",
+          "value": 45,
+          "severity": "warning",
+          "description": "Main meals should provide at least 45 g carbohydrate to match medication or insulin.",
+          "source": "Typical institutional CCHO pattern (45-60 g/meal)"
+        },
+        {
+          "id": "carb_snack_max",
+          "type": "max",
+          "scope": "meal",
+          "applies_to": "snack",
+          "nutrient": "carbs_g",
+          "value": 30,
+          "severity": "warning",
+          "description": "Snacks should stay at or below 30 g carbohydrate.",
+          "source": "Typical institutional CCHO pattern (15-30 g/snack)"
+        },
+        {
+          "id": "carb_consistency",
+          "type": "consistency",
+          "applies_to": "main",
+          "nutrient": "carbs_g",
+          "max_difference": 15,
+          "severity": "warning",
+          "description": "Carbohydrate should be similar across main meals (within 15 g).",
+          "source": "ADA: consistent carbohydrate intake"
+        },
+        {
+          "id": "no_sugar_sweetened_beverages",
+          "type": "forbidden_tags",
+          "tags": ["sugar_sweetened_beverage"],
+          "severity": "error",
+          "description": "Sugar-sweetened beverages are not allowed.",
+          "source": "ADA nutrition therapy recommendations"
+        },
+        {
+          "id": "no_concentrated_sweets",
+          "type": "forbidden_tags",
+          "tags": ["concentrated_sweet"],
+          "severity": "warning",
+          "description": "Avoid cakes, pastries and other concentrated sweets.",
+          "source": "Common hospital menu practice"
+        },
+        {
+          "id": "added_sugar_pct",
+          "type": "pct_energy_max",
+          "nutrient": "added_sugar_g",
+          "value": 10,
+          "severity": "warning",
+          "description": "Added sugars should supply less than 10% of daily energy.",
+          "source": "Dietary Guidelines for Americans; WHO free-sugars guideline"
+        },
+        {
+          "id": "sat_fat_pct",
+          "type": "pct_energy_max",
+          "nutrient": "sat_fat_g",
+          "value": 10,
+          "severity": "warning",
+          "description": "Saturated fat should supply less than 10% of daily energy.",
+          "source": "Dietary Guidelines for Americans"
+        },
+        {
+          "id": "fiber_density",
+          "type": "per_1000kcal_min",
+          "nutrient": "fiber_g",
+          "value": 14,
+          "severity": "warning",
+          "description": "Provide at least 14 g fiber per 1,000 kcal.",
+          "source": "Dietary Guidelines for Americans"
+        },
+        {
+          "id": "sodium_day_max",
+          "type": "max",
+          "scope": "day",
+          "nutrient": "sodium_mg",
+          "value": 2300,
+          "severity": "warning",
+          "description": "Daily sodium should stay below 2,300 mg.",
+          "source": "Dietary Guidelines for Americans"
+        },
+        {
+          "id": "veg_at_lunch_dinner",
+          "type": "required_tags_per_meal",
+          "meal_names": ["lunch", "dinner"],
+          "any_of": ["non_starchy_veg"],
+          "severity": "warning",
+          "description": "Lunch and dinner should include a non-starchy vegetable.",
+          "source": "Plate-method teaching practice"
+        },
+        {
+          "id": "min_main_meals",
+          "type": "min_meals",
+          "applies_to": "main",
+          "value": 3,
+          "severity": "warning",
+          "description": "Plan at least three main meals so carbohydrate is spread evenly.",
+          "source": "ADA: consistent carbohydrate intake"
+        }
+      ]
+    },
+    {
+      "id": "diabetic_low_sodium",
+      "name": "Diabetic + Low-Sodium Diet",
+      "description": "Common combined hospital order. Later 'extends' entries override earlier ones, so the 2 g sodium rule replaces the 2,300 mg guideline.",
+      "extends": ["diabetic_ccho", "low_sodium_2g"],
+      "rules": []
+    },
+    {
+      "id": "ph_ngf_pinggang_pinoy",
+      "name": "Philippine National Guidelines (NGF 2012 + Pinggang Pinoy)",
+      "jurisdiction": "Philippines (DOH / DOST-FNRI)",
+      "description": "The Nutritional Guidelines for Filipinos messages are qualitative (no numeric limits), so they are codified as per-meal plate-composition checks and flag-for-review warnings rather than hard numeric limits.",
+      "sources": [
+        {"label": "DOST-FNRI Nutritional Guidelines for Filipinos (2012 revision): limit salty, sugar-rich, fatty and fried foods; eat more vegetables and fruits; eat fish, lean meat, poultry, eggs, beans or nuts daily"},
+        {"label": "DOST-FNRI Pinggang Pinoy: plate with grain, meat/fish, vegetable and fruit portions; a cup of rice is the main feature of the grain portion"}
+      ],
+      "rules": [
+        {
+          "id": "pp_grain",
+          "type": "required_tags_per_meal",
+          "applies_to": "main",
+          "any_of": ["starch"],
+          "severity": "warning",
+          "description": "Each main meal should include a grain/starch portion (rice, corn, bread, root crop).",
+          "source": "Pinggang Pinoy (grain portion)"
+        },
+        {
+          "id": "pp_protein",
+          "type": "required_tags_per_meal",
+          "applies_to": "main",
+          "any_of": ["protein"],
+          "severity": "warning",
+          "description": "Each main meal should include fish, lean meat, poultry, egg, beans or nuts.",
+          "source": "Pinggang Pinoy (meat/fish portion); NGF 2012"
+        },
+        {
+          "id": "pp_vegetable",
+          "type": "required_tags_per_meal",
+          "applies_to": "main",
+          "any_of": ["non_starchy_veg"],
+          "severity": "warning",
+          "description": "Each main meal should include vegetables.",
+          "source": "Pinggang Pinoy (vegetable portion); NGF 2012"
+        },
+        {
+          "id": "pp_fruit",
+          "type": "required_tags_per_meal",
+          "applies_to": "main",
+          "any_of": ["fruit"],
+          "severity": "warning",
+          "description": "Each main meal should include a fruit.",
+          "source": "Pinggang Pinoy (fruit portion); NGF 2012"
+        },
+        {
+          "id": "pp_rice_portion",
+          "type": "tag_servings_max",
+          "scope": "meal",
+          "applies_to": "main",
+          "tags": ["rice"],
+          "value": 1,
+          "severity": "warning",
+          "description": "Reference portion of about 1 cup of cooked rice per main meal (rice foods are defined per cup). Adjustable by the institution.",
+          "source": "Pinggang Pinoy (a cup of rice in the grain portion)"
+        },
+        {
+          "id": "no_high_sodium_items",
+          "type": "forbidden_tags",
+          "tags": ["high_sodium_item"],
+          "severity": "warning",
+          "description": "Flag salty foods (bagoong, patis, tuyo, processed meats, instant noodles, chicharon) for review.",
+          "source": "NGF 2012: limit salty foods"
+        },
+        {
+          "id": "no_sugar_sweetened_beverages",
+          "type": "forbidden_tags",
+          "tags": ["sugar_sweetened_beverage"],
+          "severity": "warning",
+          "description": "Flag sugar-sweetened drinks (soft drinks, powdered juice drinks, 3-in-1 coffee) for review.",
+          "source": "NGF 2012: limit sugar-rich foods"
+        },
+        {
+          "id": "no_concentrated_sweets",
+          "type": "forbidden_tags",
+          "tags": ["concentrated_sweet"],
+          "severity": "warning",
+          "description": "Flag sweets and desserts (halo-halo, leche flan, turon, banana cue) for review.",
+          "source": "NGF 2012: limit sugar-rich foods"
+        },
+        {
+          "id": "no_fried_foods",
+          "type": "forbidden_tags",
+          "tags": ["fried"],
+          "severity": "warning",
+          "description": "Flag fried foods for review.",
+          "source": "NGF 2012: limit fatty and fried foods"
+        }
+      ]
+    },
+    {
+      "id": "davao_hospital_low_sodium",
+      "name": "Davao City Hospital - Low-Sodium Diet (template)",
+      "jurisdiction": "Davao City, Philippines",
+      "institution": "TEMPLATE - replace with your hospital's own diet manual values",
+      "status": "template",
+      "description": "Philippine national plate guidance plus a 2,000 mg/day sodium limit (the WHO benchmark that Philippine sodium-reduction advocacy refers to). Not an official policy of any specific hospital.",
+      "extends": ["ph_ngf_pinggang_pinoy", "low_sodium_2g"],
+      "rules": []
+    },
+    {
+      "id": "davao_hospital_diabetic",
+      "name": "Davao City Hospital - Diabetic Diet (template)",
+      "jurisdiction": "Davao City, Philippines",
+      "institution": "TEMPLATE - replace with your hospital's own diet manual values",
+      "status": "template",
+      "description": "Philippine national plate guidance plus a consistent-carbohydrate pattern. The Pinggang Pinoy vegetable check replaces the lunch/dinner-only vegetable rule. Not an official policy of any specific hospital.",
+      "extends": ["ph_ngf_pinggang_pinoy", "diabetic_ccho"],
+      "disable_rules": ["veg_at_lunch_dinner"],
+      "rules": [
+        {
+          "id": "sodium_day_max",
+          "type": "max",
+          "scope": "day",
+          "nutrient": "sodium_mg",
+          "value": 2000,
+          "severity": "warning",
+          "description": "Daily sodium should stay below 2,000 mg (WHO benchmark).",
+          "source": "WHO: < 2,000 mg sodium (< 5 g salt) per day"
+        }
+      ]
+    },
+    {
+      "id": "davao_hospital_diabetic_low_sodium",
+      "name": "Davao City Hospital - Diabetic + Low-Sodium Diet (template)",
+      "jurisdiction": "Davao City, Philippines",
+      "institution": "TEMPLATE - replace with your hospital's own diet manual values",
+      "status": "template",
+      "description": "Combined order: Philippine plate guidance + consistent carbohydrate + 2,000 mg sodium (error level). Later 'extends' entries override earlier ones with the same rule id, so the clinical rules are stricter than the national flag-for-review rules.",
+      "extends": ["ph_ngf_pinggang_pinoy", "diabetic_ccho", "low_sodium_2g"],
+      "disable_rules": ["veg_at_lunch_dinner"],
+      "rules": []
+    }
+  ]
+}
